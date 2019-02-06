@@ -1,13 +1,12 @@
 # RESTAPI USING NODE EXPRESS
+- 참조 : http://webframeworks.kr/tutorials/nodejs
 
 > restapi를 nodejs와 express를 통해 구현해보며 이해한다.
-> 참조한 블로그는 다음과 같다. http://webframeworks.kr/tutorials/nodejs
 
 ## Node.js
 
 ## Express.js
 > node를 기반으로 한 웹서버를 간단하게 만들 수 있게하는 프레임워크
-> htep
 
 ### Application
 - express 객체를 app이라는 변수에 할당하게되면 익스프레스 어플리케이션이라는 객체가 할당된다.
@@ -52,3 +51,11 @@
 ## TEST !!!
 > 해당 예제에서는 mocha를 이용해 test를 실시하였다.
 
+# Nodejs 몰랐던 점!
+
+## 1. CommonJS !!
+- nodejs에서 기본적으로 설정한 모듈 불러내기/불러오기 에 사용된다.
+- CommonJS는 nodejs 에서 모듈을 불러내기를 할 때 사용되는 require가 대표적인 예시이다.
+- module.exports 와 exports의 차이!?
+    - module.exports 변수에 딱 하나의 객체를 할당하여 내보낼 때 사용된다.
+    - exports 는 여러 개의 객체를 내보낼 경 변수의 속성으로 할당한다. (예제 api/user/user.controller)

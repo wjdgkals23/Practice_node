@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel api --extensions='.js' --out-dir lib",
+    "start": "npx babel app.js | node"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +15,11 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "mocha": "^5.2.0"
+  },
+  "babel": {
+    "presets": ["env"]
   }
 }
