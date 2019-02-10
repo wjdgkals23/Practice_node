@@ -1,6 +1,6 @@
-import express from 'express';
+const express = require('express');
 const app = express(); // 서버를 셋팅하고 서버를 구동하는 역할
-import bodyParser from 'body-parser';
+const bodyParser = require('body-parser');
 
 app.use(express.static('public')); // 서버 셋팅 - 정적파일 셋팅
 
@@ -17,3 +17,5 @@ app.get('/', (req, res) => {
 app.listen(3000, () => { // 서버 구동
     console.log('Example app listening on port 3000!');
 });
+
+module.exports = app;

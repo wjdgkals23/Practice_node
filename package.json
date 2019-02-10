@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx babel api --extensions='.js' --out-dir lib",
-    "start": "npx babel app.js | node"
+    "start": "npx babel app.js | node",
+    "test2": "node_modules/.bin/mocha lib/user/user.spec.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,9 +18,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2"
   },
   "babel": {
-    "presets": ["env"]
+    "presets": [
+      "env"
+    ]
   }
 }

@@ -51,6 +51,15 @@
 ## TEST !!!
 > 해당 예제에서는 mocha를 이용해 test를 실시하였다.
 
+### Mocha
+- 테스트 코드를 실행시켜주는 테스트 러너이다.
+- 테스트는 테스트 수트(suite)와 테스트(test)로 구분할 수 있다.
+    - suite : 테스트를 진행할 하나의 환경 == describe
+    - test : 환경안에서 확인되야할 하나의 요건 == it
+
+### SuperTest
+- API 테스트를 가능하게 해주는 모듈
+
 # Nodejs 몰랐던 점!
 
 ## 1. CommonJS !!
