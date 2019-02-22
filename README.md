@@ -66,5 +66,5 @@
 - nodejs에서 기본적으로 설정한 모듈 불러내기/불러오기 에 사용된다.
 - CommonJS는 nodejs 에서 모듈을 불러내기를 할 때 사용되는 require가 대표적인 예시이다.
 - module.exports 와 exports의 차이!?
-    - module.exports 변수에 딱 하나의 객체를 할당하여 내보낼 때 사용된다.
-    - exports 는 여러 개의 객체를 내보낼 경 변수의 속성으로 할당한다. (예제 api/user/user.controller)
+    - module.exports의 초기값에 대한 참조가 exports 이다.
+    - 따라서 exports에 새로운 변수를 할당하는 것은 잘못된 코드이고 속성에 새롭게 함수를 할당하는 것이 올바르게 사용하는 방식
