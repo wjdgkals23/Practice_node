@@ -1,3 +1,5 @@
 const Logger = require("./logger");
+const Temp = require("./moduleinstance");
 
-Logger.info("temp");
+Temp.add();
+console.log(Logger.count);
