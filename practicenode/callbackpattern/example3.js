@@ -13,7 +13,7 @@ function inconsistentRead(filename, callback) {
     else{
         fs.readFile(filename, "utf8", (err,data) => {
             if(err) {
-                callback(err);
+                return callback(err);
             }
             else{
                 cache[filename] = data;

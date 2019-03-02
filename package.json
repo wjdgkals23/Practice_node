@@ -18,9 +18,15 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "cheerio": "^1.0.0-rc.2",
+    "mkdirp": "^0.5.1",
     "mocha": "^5.2.0",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
     "should": "^13.2.3",
-    "supertest": "^3.4.2"
+    "slug": "^1.0.0",
+    "supertest": "^3.4.2",
+    "url": "^0.11.0"
   },
   "babel": {
     "presets": [
