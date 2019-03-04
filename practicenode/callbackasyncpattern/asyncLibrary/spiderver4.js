@@ -3,8 +3,11 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const path = require('path');
 const utilities = require('./utilities');
-const TaskQueue = require('./taskQueue');
-let downloadQueue = new TaskQueue(3);
+const async = require('async');
+
+const downloadQueue = async.queue((taskData, callback) => {
+    spider(taskData.link, taskData.nesting - 1, callback); //외부 콜백
+}, 2)
 
 function spiderLinks(currentUrl, body, nesting, callback) {
     console.log("spiderLinks");
@@ -18,22 +21,20 @@ function spiderLinks(currentUrl, body, nesting, callback) {
     }
 
     let completed = 0, hasErrors = false;
-    let that = this;
     links.forEach(link => {
-        downloadQueue.pushTask(done => {
-            let that1 = this;
-            spider(link, nesting - 1, err => {
-                if(err) {
-                    hasErrors = true;
-                    return callback(err);
-                }
-                // console.log(that === that1); spider의 콜백을 화살표함수로 작성했기때문에 해당 콜백의 this는 상위인 spiderLinks의 this값이 바인딩된다.
-                // console.log(that1 === this);
-                if(++completed === links.length && !hasErrors) {
-                    callback();
-                }
-                done();
-            });
+        let data = {
+            link: link,
+            nesting: nesting
+        };
+        downloadQueue.push(data, (err) => {
+            if(err) {
+                hasErrors = true;
+                return callback(err);
+            }
+
+            if(++completed === links.length && !hasErrors) {
+                callback();
+            }
         });
     });
 }

@@ -13,7 +13,7 @@ module.exports = class TaskQueue {
     next() {
         while (this.running < this.concurrency && this.queue.length) {
             const task = this.queue.shift();
-            task (() => { // done 함수 각 task에 부여되어 프로세스의 수를 조절한다.
+            task (() => { // done 함수, 각 task에 부여되어 프로세스의 수를 조절한다.
                 this.running--;
                 this.next();
             });

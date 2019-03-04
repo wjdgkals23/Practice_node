@@ -1,7 +1,6 @@
-// 오류 검사에서 else 를 최대한 제거한다. return을 활용한다.
-// 최소한의 기능을 가진 함수들로 단위를 나누어 재사용성을 높힌다.
 "use strict";
 
+const async = require('async');
 const request = require('request');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
@@ -60,14 +59,10 @@ function spiderLinks(currentUrl, body, nesting, callback) {
         }
     }
 
-    links.forEach(link => {
-        spider(link, nesting-1, done);
-    });
+    async.each(links, (link, callback) => {
+        spider(link, nesting-1, callback); //외부 콜백
+    }, callback); // 내부콜백
 }
-
-// 이 함수에서 경쟁상황은 읽기 대상의 url이 똑같은 것이 2번 들어오는 경우이다.
-// 비동기적으로 처리되기때문에 연달아 동일한 2개의 url이 들어온다면 다운로드를 2번 진행하는 상황을 보게된다.
-// Map을 이용해서 경쟁상태에 대한 체크를 진행하며 수행하는 것이 좋은 방식이다.
 
 const spidering = new Map();
 

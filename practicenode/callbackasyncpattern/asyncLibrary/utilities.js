@@ -13,13 +13,15 @@ module.exports.urlToFilename = function urlToFilename(url) {
             return component !== '';
         })
         .map(function(component) {
-            return slug(component);
+            return slug(component, { remove: null });
         })
         .join('/');
     let filename = path.join(parsedUrl.hostname, urlPath);
+    console.log(filename);
     if(!path.extname(filename).match(/htm/)) {
         filename += '.html';
     }
+    console.log(filename);
     return filename;
 };
 
@@ -27,10 +29,10 @@ module.exports.getLinkUrl = function getLinkUrl(currentUrl, element) {
     const link = urlResolve(currentUrl, element.attribs.href || "");
     const parsedLink = urlParse(link);
     const currentParsedUrl = urlParse(currentUrl);
-    // if(parsedLink.hostname !== currentParsedUrl.hostname // 문서내 링크 호스트 확인 서로 다른 호스트에 무수히 많이 접근할 시 부정사용으로 간주됨
-    //     || !parsedLink.pathname) {
-    //     return null;
-    // }
+    if(parsedLink.hostname !== currentParsedUrl.hostname
+        || !parsedLink.pathname) {
+        return null;
+    }
     return link;
 };
 
