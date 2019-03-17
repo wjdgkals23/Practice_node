@@ -20,25 +20,21 @@
 //     return ans;
 // }
 
+const {performance} = require('perf_hooks');
+
 function solution(A) {
-    A.sort(function(a,b) {
-        if(a>b)
-            return -1;
+    // write your code in JavaScript (Node.js 8.9.4)
+    let mp = new Map();
+    for(let i=0; i<A.length; i++) {
+        if(mp.has(A[i]))
+            mp.delete(A[i]);
         else
-            return 1;
-    });
-
-    if(A[0] !== A[1])
-        return A[0];
-
-    for(let i=0; i<A.length; i=i+2) {
-        if(A[i] !== A[i+1]) {
-            if(A[i] !== A[i-1])
-                return A[i];
-            else
-                return A[i+1];
-        }
+            mp.set(A[i],0);
     }
+
+    return mp.keys().next().value
 }
 
+let time = performance.now();
 console.log(solution([11,3,7,3,11]));
+console.log(performance.now() - time);
