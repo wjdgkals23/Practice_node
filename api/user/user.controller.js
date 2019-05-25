@@ -13,9 +13,13 @@ let users = [
     }
 ];
 
-exports.index = (req, res) => { return res.json(users) };
+exports.index = (req, res) => {
+    console.log("index");
+    return res.json(users)
+};
 
 exports.show = (req, res) => {
+    console.log("show");
     const id = parseInt(req.params.id, 10);
     if (!id) { // id에 0이 있을 경우 && id !== 0 추가
         return res.status(400).json({error: 'Incorrect id'});
@@ -30,6 +34,7 @@ exports.show = (req, res) => {
 }
 
 exports.delete = (req, res) => {
+    console.log("delete");
     const id = parseInt(req.params.id, 10);
     if (!id) {
         return res.status(400).json({error: 'Incorrect id'});

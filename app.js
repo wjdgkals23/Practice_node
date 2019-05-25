@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express(); // 서버를 셋팅하고 서버를 구동하는 역할
 const bodyParser = require('body-parser');
+const logger = require("./middlewares/logger");
 
+app.use(logger());
 app.use(express.static('public')); // 서버 셋팅 - 정적파일 셋팅
 
 app.use(bodyParser.json());

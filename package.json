@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx babel api --extensions='.js' --out-dir lib",
-    "start": "npx babel app.js | node",
+    "start": "DEBUG=express:* npx babel app.js | node",
     "test2": "node_modules/.bin/mocha lib/user/user.spec.js"
   },
   "author": "",
